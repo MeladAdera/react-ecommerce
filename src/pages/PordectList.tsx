@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../api/products';
+import { useCartStore } from '../store/cartStore'; 
 
 interface Product {
   id: number;
@@ -11,6 +12,7 @@ interface Product {
 export default function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCartStore(); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -26,7 +28,7 @@ export default function ProductList() {
     fetchProducts();
   }, []);
 
-  if (loading) return <div>جاري التحميل...</div>;
+  if (loading) return <div>LOADING..</div>;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
@@ -35,8 +37,16 @@ export default function ProductList() {
           <img src={product.image} alt={product.title} className="h-40 object-contain mx-auto" />
           <h3 className="font-semibold mt-2">{product.title}</h3>
           <p className="text-gray-600">${product.price}</p>
-          <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
-            عرض التفاصيل
+          <button 
+            onClick={() => addToCart({ 
+              productId: product.id,
+              title: product.title,
+              price: product.price,
+              image: product.image
+            })}
+            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Add to cart
           </button>
         </div>
       ))}
