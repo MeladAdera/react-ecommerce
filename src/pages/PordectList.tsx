@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../api/products';
 import { useCartStore } from '../store/cartStore';
+import { Link } from 'react-router-dom';
 
 interface Product {
   id: number;
@@ -28,7 +29,6 @@ export default function ProductList() {
     fetchProducts();
   }, []);
 
-  // تحسين شاشة التحميل
   if (loading) return (
     <div className="flex justify-center items-center h-64">
       <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
@@ -45,7 +45,7 @@ export default function ProductList() {
             key={product.id} 
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
-            {/* تحسين عرض الصورة */}
+            
             <div className="h-48 flex items-center justify-center p-4 bg-gray-50">
               <img 
                 src={product.image} 
@@ -54,7 +54,7 @@ export default function ProductList() {
               />
             </div>
 
-            {/* تحسين تفاصيل المنتج */}
+            
             <div className="p-5">
               <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2">
                 {product.title}
@@ -77,6 +77,9 @@ export default function ProductList() {
                   Add to Cart
                 </button>
               </div>
+              <Link to={`/products/${product.id}`} className="mt-2 bg-gray-200 px-4 py-2 rounded block text-center">
+              Show  details
+              </Link>
             </div>
           </div>
         ))}
