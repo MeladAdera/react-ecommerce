@@ -3,6 +3,7 @@ interface StarRatingProps {
     rating: number;
     onRate?: (rating: number) => void;
     interactive?: boolean;
+    darkMode?: boolean; 
   }
   
   export default function StarRating({ 

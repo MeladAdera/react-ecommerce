@@ -66,5 +66,4 @@ export default tseslint.config([
     },
   },
 ])
-```
-# react-ecommerce
+

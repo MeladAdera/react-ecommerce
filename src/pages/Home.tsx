@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 
 const Home = () => {
+  const { isDark } = useTheme();
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-100 px-4">
+    <div className={`flex items-center justify-center min-h-screen ${
+      isDark ? 'bg-gray-900' : 'bg-gray-100'
+    }`}>
       <div className="bg-white p-10 md:p-14 shadow-xl rounded-3xl max-w-3xl w-full text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
           Welcome to the <span className="text-gray-900">E-commerce Store!</span>
