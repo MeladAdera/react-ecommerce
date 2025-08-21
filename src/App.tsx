@@ -2,6 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import AppRoutes from './routes/Routes';
 import ThemeToggle from './components/ThemeToggle'; // تأكد من استيراد المكون
+import { ProgressBar } from './components/ProgressBar';
 
 function App() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
+      <ProgressBar/>
       {/* الشريط العلوي مع دعم Dark Mode */}
       <nav className="bg-gray-800 dark:bg-gray-950 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
