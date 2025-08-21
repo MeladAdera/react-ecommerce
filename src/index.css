@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+button {
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 20px; /* comfortable padding */
+  border: none;
+  border-radius: 4px; /* rounded corners */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+button:hover {
+  background-color: #0056b3; /* darker shade for hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Optional: focus outline for accessibility */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.5);
+}
